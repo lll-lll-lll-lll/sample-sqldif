@@ -3,7 +3,8 @@ name: SQL File Change Workflow
 on:
   push:
     paths:
-      - './**/*.sql'
+      - '*.sql'      
+      - '**/*.sql' 
 
 jobs:
   sql_change:
