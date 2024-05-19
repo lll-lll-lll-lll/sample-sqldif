@@ -26,13 +26,9 @@ jobs:
       - name: List changed SQL files
         id: list_sql_files
         run: |
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.sql$' || true
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.sql$' > changed_sql_files.txt
       
-      - name: Execute SQL files
+      - name: Show changed SQL files
         run: |
-          for file in $(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.sql$'); do
-            echo "Executing $file"
-            # Replace the following line with the actual command to execute your SQL files
-            # For example, if using MySQL:
-            # mysql -u your_username -p your_password your_database < $file
-          done
+          echo "Changed SQL files:"
+          cat changed_sql_files.txt
