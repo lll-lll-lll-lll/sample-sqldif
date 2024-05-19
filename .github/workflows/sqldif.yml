@@ -21,7 +21,7 @@ jobs:
       
       - name: sqldif version check
         run: |
-          sqldif --version
+          sqdif --version
 
       # - name: List changed SQL files
       #   run: |
