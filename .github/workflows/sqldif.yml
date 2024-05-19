@@ -21,12 +21,13 @@ jobs:
       
       - name: sqldif version check
         run: |
-          sqdif --version
+          sqldif --version
 
       - name: List changed SQL files
+        id: list_sql_files
         run: |
-          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.sql$'
-
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.sql$' || true
+      
       - name: Execute SQL files
         run: |
           for file in $(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.sql$'); do
