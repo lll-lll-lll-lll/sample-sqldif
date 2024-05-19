@@ -1,0 +1,35 @@
+name: SQL File Change Workflow
+
+on:
+  push:
+    paths:
+      - './**/*.sql'
+
+jobs:
+  sql_change:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+      
+      - name: Install sqldif
+        run: |
+          go install github.com/lll-lll-lll-lll/sqdif@v0.2.5
+      
+      - name: sqdif version check
+        run: |
+          sqldif --version
+
+      # - name: List changed SQL files
+      #   run: |
+      #     git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.sql$'
+
+      # - name: Execute SQL files
+      #   run: |
+      #     for file in $(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.sql$'); do
+      #       echo "Executing $file"
+      #       # Replace the following line with the actual command to execute your SQL files
+      #       # For example, if using MySQL:
+      #       # mysql -u your_username -p your_password your_database < $file
+      #     done
