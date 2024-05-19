@@ -10,6 +10,7 @@ CREATE TABLE employees (
     department_id INT,
     email VARCHAR(255),
     test VARCHAR(255),
+    test2 VARCHAR(255),
     FOREIGN KEY (department_id) REFERENCES departments(department_id)
 );
 

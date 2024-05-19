@@ -26,7 +26,7 @@ jobs:
       - name: List changed SQL files
         id: list_sql_files
         run: |
-          git diff --name-only HEAD^ HEAD | grep '\.sql$' > changed_sql_files.txt
+          git diff --name-only ${{ github.event.before }} | grep '\.sql$' > changed_sql_files.txt
       
       - name: Show changed SQL files
         run: |
