@@ -23,15 +23,15 @@ jobs:
         run: |
           sqdif --version
 
-      # - name: List changed SQL files
-      #   run: |
-      #     git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.sql$'
+      - name: List changed SQL files
+        run: |
+          git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.sql$'
 
-      # - name: Execute SQL files
-      #   run: |
-      #     for file in $(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.sql$'); do
-      #       echo "Executing $file"
-      #       # Replace the following line with the actual command to execute your SQL files
-      #       # For example, if using MySQL:
-      #       # mysql -u your_username -p your_password your_database < $file
-      #     done
+      - name: Execute SQL files
+        run: |
+          for file in $(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.sql$'); do
+            echo "Executing $file"
+            # Replace the following line with the actual command to execute your SQL files
+            # For example, if using MySQL:
+            # mysql -u your_username -p your_password your_database < $file
+          done
