@@ -17,8 +17,9 @@ jobs:
       - name: Install sqldif
         run: |
           go install github.com/lll-lll-lll-lll/sqdif@v0.2.5
+          echo "${HOME}/go/bin" >> $GITHUB_PATH
       
-      - name: sqdif version check
+      - name: sqldif version check
         run: |
           sqldif --version
 
