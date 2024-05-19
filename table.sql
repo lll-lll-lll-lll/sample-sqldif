@@ -12,7 +12,3 @@ CREATE TABLE employees (
     FOREIGN KEY (department_id) REFERENCES departments(department_id)
 );
 
-CREATE TABLE departments (
-    department_id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL
-);
